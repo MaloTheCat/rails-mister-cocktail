@@ -1,0 +1,35 @@
+<div class="container">
+  <h1>
+    <%= @cocktail.name %>
+  </h1>
+
+  Ingrédients :
+  <br><br><br>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Quantité</th>
+        <th scope="col" >Ingrédients</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @cocktail.doses.each do |dose| %>
+        <tr>
+          <td scope="row"><%= dose.description %></td>
+          <td scope="row"><%= dose.ingredient.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<h3>Add ingredient</h3>
+
+<%= simple_form_for [ @cocktail, @dose ] do |f| %>
+  <%= f.input :description %>
+  <%= f.association :ingredient, collection: Ingredient.all %>
+  <%= f.submit 'ajouter une dose', class: "btn btn-primary" %>
+<% end %>
+
+
+<%= link_to "Back", root_path, class: "btn btn-warning" %>
