@@ -3,13 +3,15 @@
     <%= @cocktail.name %>
   </h1>
 
+  <%= cl_image_tag @cocktail.photo.key, height: 300, width: 400, crop: :fill %>
+
   Ingrédients :
   <br><br><br>
   <table class="table">
     <thead>
       <tr>
         <th scope="col">Quantité</th>
-        <th scope="col" >Ingrédients</th>
+        <th scope="col">Ingrédients</th>
       </tr>
     </thead>
     <tbody>
